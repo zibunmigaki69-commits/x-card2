@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>クッションリンク生成</title>
+</head>
+<body style="font-family:sans-serif; padding:20px;">
+
+  <h2>クッションリンク生成ツール</h2>
+
+  <p>① 中の画像URL</p>
+  <input id="image" style="width:100%;" placeholder="https://example.com/image.jpg" />
+
+  <p>② 移動先URL</p>
+  <input id="link" style="width:100%;" placeholder="https://example.com" />
+
+  <br><br>
+  <button onclick="make()">リンク生成</button>
+
+  <p>③ できたURL</p>
+  <input id="result" style="width:100%;" />
+
+  <script>
+    function make() {
+      const image = document.getElementById("image").value;
+      const link = document.getElementById("link").value;
+
+      const url =
+        "https://x-card2.vercel.app/?" +
+        "image=" + encodeURIComponent(image) +
+        "&link=" + encodeURIComponent(link) +
+        "&v=" + Date.now();
+
+      document.getElementById("result").value = url;
+    }
+  </script>
+
+</body>
+</html>
