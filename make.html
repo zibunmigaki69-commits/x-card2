@@ -81,10 +81,15 @@ small {
 
   <button class="copy" onclick="copy()">コピー</button>
 
-  <small>※ Xのカード画像は固定です</small>
+  <small>※ Xに表示される画像は固定です</small>
 </div>
 
 <script>
+const imageInput = document.getElementById("image");
+const linkInput  = document.getElementById("link");
+const result     = document.getElementById("result");
+const preview    = document.getElementById("preview");
+
 function make(){
   const image = imageInput.value.trim();
   const link  = linkInput.value.trim();
@@ -107,11 +112,6 @@ function copy(){
   document.execCommand("copy");
   alert("コピーしました！");
 }
-
-const imageInput = document.getElementById("image");
-const linkInput  = document.getElementById("link");
-const result     = document.getElementById("result");
-const preview    = document.getElementById("preview");
 </script>
 
 </body>
