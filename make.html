@@ -1,39 +1,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <title>クッションリンク生成</title>
+<meta charset="utf-8">
+<title>Xリンクカード生成ツール</title>
+
+<style>
+body {
+  font-family: system-ui, sans-serif;
+  background:#f5f6f8;
+  padding:40px;
+}
+.box {
+  max-width:500px;
+  margin:auto;
+  background:#fff;
+  padding:24px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+h1 {
+  font-size:20px;
+  margin-bottom:20px;
+}
+label {
+  font-size:13px;
+  color:#555;
+}
+input {
+  width:100%;
+  padding:10px;
+  margin:6px 0 16px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+button {
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#1d9bf0;
+  color:#fff;
+  font-size:15px;
+  cursor:pointer;
+}
+button.copy {
+  background:#333;
+  margin-top:8px;
+}
+.preview {
+  text-align:center;
+  margin:16px 0;
+}
+.preview img {
+  max-width:100%;
+  border-radius:10px;
+}
+small {
+  color:#888;
+}
+</style>
 </head>
-<body style="font-family:sans-serif; padding:20px;">
 
-  <h2>クッションリンク生成ツール</h2>
+<body>
 
-  <p>① 中の画像URL</p>
-  <input id="image" style="width:100%;" placeholder="https://example.com/image.jpg" />
+<div class="box">
+  <h1>🔗 Xリンクカード生成</h1>
 
-  <p>② 移動先URL</p>
-  <input id="link" style="width:100%;" placeholder="https://example.com" />
+  <label>① 中の画像URL</label>
+  <input id="image" placeholder="https://～.jpg">
 
-  <br><br>
+  <label>② 移動先URL</label>
+  <input id="link" placeholder="https://～">
+
   <button onclick="make()">リンク生成</button>
 
-  <p>③ できたURL</p>
-  <input id="result" style="width:100%;" />
+  <div class="preview" id="preview"></div>
 
-  <script>
-    function make() {
-      const image = document.getElementById("image").value;
-      const link = document.getElementById("link").value;
+  <label>③ 生成されたURL</label>
+  <input id="result" readonly>
 
-      const url =
-        "https://x-card2.vercel.app/?" +
-        "image=" + encodeURIComponent(image) +
-        "&link=" + encodeURIComponent(link) +
-        "&v=" + Date.now();
+  <button class="copy" onclick="copy()">コピー</button>
 
-      document.getElementById("result").value = url;
-    }
-  </script>
+  <small>※ Xのカード画像は固定です</small>
+</div>
+
+<script>
+function make(){
+  const image = imageInput.value.trim();
+  const link  = linkInput.value.trim();
+
+  const url =
+    "https://x-card2.vercel.app/?" +
+    "image=" + encodeURIComponent(image) +
+    "&link=" + encodeURIComponent(link) +
+    "&v=" + Date.now();
+
+  result.value = url;
+
+  preview.innerHTML = image
+    ? `<img src="${image}">`
+    : "";
+}
+
+function copy(){
+  result.select();
+  document.execCommand("copy");
+  alert("コピーしました！");
+}
+
+const imageInput = document.getElementById("image");
+const linkInput  = document.getElementById("link");
+const result     = document.getElementById("result");
+const preview    = document.getElementById("preview");
+</script>
 
 </body>
 </html>
