@@ -1,39 +1,14 @@
-<!DOCTYPE html>
-<html>
 <head>
-  <meta charset="utf-8">
-  <title>詳細はこちら</title>
+  <meta charset="utf-8" />
+  <title>X Card</title>
 
-  <!-- X / OGP（固定1枚） -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="詳細はこちら">
-  <meta property="og:description" content="タップでページを開きます">
-  <meta property="og:image" content="https://x-card2.vercel.app/og.png">
-  <meta name="twitter:card" content="summary_large_image">
+  <!-- OGP（Xが読む） -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="リンクカード" />
+  <meta property="og:description" content="タップで移動" />
+  <meta property="og:image" content="https://crude-pink-n53letupec.edgeone.app/IMG_8469.jpeg" />
+  <meta property="og:url" content="https://x-card2.vercel.app/" />
+
+  <!-- X（Twitter）専用 -->
+  <meta name="twitter:card" content="summary_large_image" />
 </head>
-
-<body style="margin:0; padding:20px; font-family:sans-serif; text-align:center;">
-
-  <h2>👇 画像をタップしてください</h2>
-
-  <a id="link" href="#">
-    <img
-      id="img"
-      style="width:100%; max-width:600px; border-radius:12px;"
-      alt="image"
-    >
-  </a>
-
-  <p style="color:#666;">※別サイトへ移動します</p>
-
-  <script>
-    const p = new URLSearchParams(location.search);
-    const image = p.get("image");
-    const link = p.get("link");
-
-    if (image) document.getElementById("img").src = image;
-    if (link) document.getElementById("link").href = link;
-  </script>
-
-</body>
-</html>
