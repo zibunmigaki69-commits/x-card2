@@ -1,30 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <title>X Card</title>
 
-  <!-- Xが読む情報 -->
+  <!-- OGP（Xが読む） -->
+  <meta property="og:type" content="website" />
   <meta property="og:title" content="リンクカード" />
   <meta property="og:description" content="タップで移動" />
   <meta property="og:image" content="https://crude-pink-n53letupec.edgeone.app/IMG_8469.jpeg" />
+  <meta property="og:url" content="https://x-card2.vercel.app/" />
+
+  <!-- X（Twitter）専用 -->
+  <meta name="twitter:card" content="summary_large_image" />
 </head>
-<body>
-  <a id="link">
-    <img id="img" style="width:100%;" />
-  </a>
 
-  <script>
-    const p = new URLSearchParams(location.search);
-    const link = p.get("link");
-    const image = p.get("image");
-
-    document.getElementById("link").href = link;
-    document.getElementById("img").src = image;
-
-    document
-      .querySelector('meta[property="og:image"]')
-      .setAttribute("content", image);
-  </script>
-</body>
-</html>
